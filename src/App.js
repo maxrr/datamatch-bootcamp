@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+
+import { useState } from 'react';
+import CardEditor from './CardEditor';
+import CardViewer from './CardViewer';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [cards, setCards] = useState([{ front: "front1", back: "back1" }, { front: "front2", back: "back2" }]);
+  const [editor, setEditor] = useState(true);
+
+  function addCard(card) {
+    setCards(o => [...o, card]);
+  }
+
+  function deleteCard(ix) {
+    setCards(o => [...o.slice(0, ix), ...o.slice(ix + 1)]);
+  }
+
+  function switchModes() {
+    console.log('called');
+    setEditor(e => !e);
+  }
+
+  return <div>
+    {
+      editor ? <CardEditor cards={cards} addCard={addCard} deleteCard={deleteCard} /> : <CardViewer cards={cards} />
+    }
+    <br />
+    <button onClick={switchModes}>Go to card {editor ? "viewer" : "editor"}</button>
+  </div>
 }
 
 export default App;

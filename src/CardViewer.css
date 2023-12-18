@@ -1,0 +1,6 @@
+.flashcard {
+    min-width: 20rem;
+    min-height: 14rem;
+    cursor: "hand";
+    background: white;
+}
