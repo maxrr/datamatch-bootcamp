@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "./CardViewer.css";
+import { Link } from "react-router-dom";
 
 function CardViewer({ cards }) {
     const [pos, setPos] = useState(0);
@@ -7,9 +8,9 @@ function CardViewer({ cards }) {
 
     if (cards.length === 0)
     {
-        return <div>
-            <h1>Viewer</h1>
-            <h2>No flashcards!</h2>
+        return <div class="container">
+            <h2>Card Viewer</h2>
+            <h3>No flashcards!</h3>
         </div>
     }
 
@@ -28,14 +29,17 @@ function CardViewer({ cards }) {
         setFront(true);
     }
 
-    return <div>
-        <h1>Viewer</h1>
+    return <div class="container">
+        <h2>Card Viewer</h2>
         <h3>Card {pos + 1} of {cards.length}</h3>
         <button class="flashcard" onClick={() => setFront(o => !o)}><div>{front ? cards[pos].front : cards[pos].back}</div></button>
         <br />
         <br />
         <button disabled={pos <= 0} onClick={handlePreviousCard}>Previous card</button>
         <button disabled={pos >= cards.length - 1} onClick={handleNextCard}>Next card</button>
+        <br />
+        <br />
+        <Link to="/editor"><button>Go to editor</button></Link>
     </div>
 }
 

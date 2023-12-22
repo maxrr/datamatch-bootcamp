@@ -1,0 +1,45 @@
+html, body {
+    margin: 0px;
+}
+
+.home-title-big {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    /* background: red; */
+    gap: 0.5rem;
+}
+
+.home-title-big > * {
+    margin: 0;
+}
+
+.home-title-big > div {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.home-title-big > div div {
+    background: white;
+    color: black;
+    border: 1px solid black;
+    /* cursor: "hand"; */
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    border-radius: 1rem;
+    transition: all 150ms ease;
+}
+
+.home-title-big > div div:hover {
+    background: lightblue;
+}
+
+// https://stackoverflow.com/questions/45087054/br-is-not-friendly-with-the-flexbox
+br {
+    content: '\A';
+    display: contents;
+    white-space: pre;
+}

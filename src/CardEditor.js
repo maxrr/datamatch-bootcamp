@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './CardEditor.css';
+import { Link } from "react-router-dom";
 
 function CardEditor({ cards, addCard, deleteCard }) {
     const [cardFront, setCardFront] = useState("");
@@ -24,7 +25,7 @@ function CardEditor({ cards, addCard, deleteCard }) {
         deleteCard(ix);
     }
 
-    return <div>
+    return <div class="container">
         <h2>Card Editor</h2>
         <table>
             <thead>
@@ -48,6 +49,9 @@ function CardEditor({ cards, addCard, deleteCard }) {
         <input name="cardFront" placeholder="Front of card" value={cardFront} onChange={n => setCardFront(n.target.value)}/>
         <input name="cardBack" placeholder="Back of card" value={cardBack} onChange={n => setCardBack(n.target.value)}/>
         <button onClick={handleAddCard}>Add card</button>
+        <br />
+        <br />
+        <Link to="/viewer"><button>Go to viewer</button></Link>
     </div>
 }
 export default CardEditor;

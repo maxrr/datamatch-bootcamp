@@ -1,0 +1,38 @@
+{
+  "flashcards": [
+    {
+      "cards": [
+        {
+          "back": "Purple",
+          "front": "Onion"
+        },
+        {
+          "back": "Green",
+          "front": "Green pepper"
+        },
+        {
+          "back": "Red",
+          "front": "Pepperoni"
+        }
+      ],
+      "name": "Pizza toppings' color"
+    },
+    {
+      "cards": [
+        {
+          "back": "Honda",
+          "front": "Accord"
+        },
+        {
+          "back": "Kia",
+          "front": "Soul"
+        },
+        {
+          "back": "Toyota",
+          "front": "Corolla"
+        }
+      ],
+      "name": "Car models to makers"
+    }
+  ]
+}
