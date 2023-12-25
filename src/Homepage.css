@@ -1,8 +1,8 @@
-html, body {
+/* html, body {
     margin: 0px;
-}
+} */
 
-.home-title-big {
+/* .home-title-big {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -10,31 +10,48 @@ html, body {
     justify-content: center;
     width: 100vw;
     height: 100vh;
-    /* background: red; */
     gap: 0.5rem;
 }
 
 .home-title-big > * {
     margin: 0;
-}
+} */
 
 .home-title-big > div {
     display: flex;
+    flex-direction: column;
     gap: 0.5rem;
+    margin: 0;
+    padding: 0;
 }
 
-.home-title-big > div div {
+.home-title-big > div > h2 {
+    margin: 0;
+    padding: 0;
+}
+
+/* .home-title-big > div div {
     background: white;
     color: black;
     border: 1px solid black;
-    /* cursor: "hand"; */
     padding: 1rem 1.5rem 1rem 1.5rem;
     border-radius: 1rem;
     transition: all 150ms ease;
+} */
+
+/* .home-title-big > div div:hover {
+    background: lightblue;
+} */
+
+.home-decks-list { 
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
-.home-title-big > div div:hover {
-    background: lightblue;
+.home-deck-link p {
+    margin: 0;
+    padding: 0;
 }
 
 // https://stackoverflow.com/questions/45087054/br-is-not-friendly-with-the-flexbox

@@ -11,14 +11,16 @@ import {
 } from "react-redux-firebase";
 
 import { BrowserRouter } from "react-router-dom";
-import { initializeApp } from 'firebase/app';
+// import { initializeApp } from 'firebase/app';
 import { composeWithDevTools } from '@redux-devtools/extension';
 
 // https://stackoverflow.com/questions/68946446/how-do-i-fix-a-firebase-9-0-import-error-attempted-import-error-firebase-app
 import firebase from 'firebase/compat/app';
+import "firebase/compat/database";
 import firebaseConfig from './firebase.config';
 
-const app = initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
+// const app = firebase.initializeApp(firebaseConfig);
 
 // Add firebase to reducers
 const rootReducer = combineReducers({
