@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import "./CardEditor.css";
 import { Link } from "react-router-dom";
-import { firebaseConnect } from 'react-redux-firebase';
+import { firebaseConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { withRouter } from "./WithRouter";
+import "./CardEditor.css";
+import "./Globals.css";
 
 function CardEditor({ firebase, router }) {
   const [cards, setCards] = useState([
@@ -27,8 +28,8 @@ function CardEditor({ firebase, router }) {
     // });
 
     const newCard = { front: cardFront, back: cardBack };
-    setCards(o => o.slice().concat(newCard));
-    
+    setCards((o) => o.slice().concat(newCard));
+
     setCardFront("");
     setCardBack("");
   }
@@ -37,7 +38,7 @@ function CardEditor({ firebase, router }) {
     if (cards.length <= 1)
       return alert("You must have at least one flashcard!");
 
-    setCards(o => [...o.slice(0, ix), ...o.slice(ix + 1, o.length)]);
+    setCards((o) => [...o.slice(0, ix), ...o.slice(ix + 1, o.length)]);
     // deleteCard(ix);
   }
 
@@ -61,19 +62,39 @@ function CardEditor({ firebase, router }) {
       console.error(err);
       alert("Sorry, an error has occurred. Please try again later.");
     }
-    
   }
 
   return (
-    <div className="container">
+    <div className="main-container">
+      <Link to="/" className="link-return">
+        <div className="link-return-inner">
+          <svg
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            stroke-linejoin="round"
+            stroke-miterlimit="2"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            className="link-return-icon"
+          >
+            <path
+              d="m10.978 14.999v3.251c0 .412-.335.75-.752.75-.188 0-.375-.071-.518-.206-1.775-1.685-4.945-4.692-6.396-6.069-.2-.189-.312-.452-.312-.725 0-.274.112-.536.312-.725 1.451-1.377 4.621-4.385 6.396-6.068.143-.136.33-.207.518-.207.417 0 .752.337.752.75v3.251h9.02c.531 0 1.002.47 1.002 1v3.998c0 .53-.471 1-1.002 1z"
+              fill-rule="nonzero"
+            />
+          </svg>
+          <p className="link-return-desc">Back to decks</p>
+        </div>
+      </Link>
       <h2>Card Editor</h2>
-      <p>Deck name</p>
-      <input
-        name="deckName"
-        placeholder="Super cool flashcards"
-        value={name}
-        onChange={(n) => setName(n.target.value)}
-      />
+      <div className="container-input">
+        <p>Deck name</p>
+        <input
+          name="deckName"
+          placeholder="Super cool flashcards"
+          value={name}
+          onChange={(n) => setName(n.target.value)}
+        />
+      </div>
       <br />
       <br />
       <table>
@@ -98,40 +119,43 @@ function CardEditor({ firebase, router }) {
           ))}
         </tbody>
       </table>
-      <br />
-      <input
-        name="cardFront"
-        placeholder="Front of card"
-        value={cardFront}
-        onChange={(n) => setCardFront(n.target.value)}
-      />
-      <input
-        name="cardBack"
-        placeholder="Back of card"
-        value={cardBack}
-        onChange={(n) => setCardBack(n.target.value)}
-      />
-      <button
-        onClick={handleAddCard}
-        disabled={cardFront.trim().length === 0 || cardBack.trim().length === 0}
-      >
-        Add card
-      </button>
-      <br />
       <hr />
-      <button
-        onClick={handleCreateDeck}
-        disabled={cards.length === 0 || name.trim().length === 0}
-      >
-        Create deck
-      </button>
-      <br />
-      <br />
-      <Link to="/">Home</Link>
+      <h4>New card</h4>
+      <div className="container-input">
+        <p>Front of card</p>
+        <input
+          name="cardFront"
+          placeholder="Term"
+          value={cardFront}
+          onChange={(n) => setCardFront(n.target.value)}
+        />
+      </div>
+      <div className="container-input">
+        <p>Back of card</p>
+        <input
+          name="cardBack"
+          placeholder="Definition"
+          value={cardBack}
+          onChange={(n) => setCardBack(n.target.value)}
+        />
+      </div>
+      <div className="editor-container-btns">
+        <button
+          onClick={handleAddCard}
+          disabled={
+            cardFront.trim().length === 0 || cardBack.trim().length === 0
+          }
+        >
+          Add card
+        </button>
+        <button
+          onClick={handleCreateDeck}
+          disabled={cards.length === 0 || name.trim().length === 0}
+        >
+          Create deck
+        </button>
+      </div>
     </div>
   );
 }
-export default compose(
-  withRouter, 
-  firebaseConnect(),
-)(CardEditor);
+export default compose(withRouter, firebaseConnect())(CardEditor);

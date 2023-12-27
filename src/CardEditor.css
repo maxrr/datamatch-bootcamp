@@ -1,11 +1,14 @@
 table,
 td,
 th {
+    border-radius: 1rem;
     border: 1px solid black;
 }
 
 table {
     border-collapse: collapse;
+    min-width: 40vw;
+    margin: 1rem !important;
 }
 
 td,
@@ -13,6 +16,52 @@ th {
     padding: 10px;
 }
 
-.container {
-    margin: 0.5rem;
+table * {
+    font-size: 1rem;
+}
+
+.container-input {
+    width: 40vw;
+    margin: 0;
+    margin-bottom: 1rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.container-input > p {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+}
+
+.editor-container-btns {
+    margin: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.editor-container-btns > button {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 2px lightblue;
+    transition: all 200ms ease, background-color 100ms ease;
+    color: black;
+    padding: 1rem;
+}
+
+.editor-container-btns > button:hover {
+    box-shadow: 10px 10px 2px steelblue;
+}
+
+.editor-container-btns > button:active {
+    background-color: lightblue;
+}
+
+.editor-container-btns > button:disabled {
+    box-shadow: 5px 5px 2px grey;
+    background-color: rgb(220, 220, 220);
 }
